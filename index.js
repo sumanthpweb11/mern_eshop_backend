@@ -1,12 +1,15 @@
 const express = require("express");
 const env = require("./config/envConfig");
+const cors = require("cors");
 const connect = require("./config/db");
-const userRoutes = require("./routes/users/userRoutes");
+const userRoutes = require("./routes/userRoutes");
+const categoryRoutes = require("./routes/categoryRoutes");
 
 const app = express();
 
 // Database Connection
 connect();
+app.use(cors());
 
 // Middlewares
 app.use(express.json());
@@ -17,6 +20,9 @@ app.get("/", (req, res) => {
 
 // User Routes
 app.use("/api", userRoutes);
+
+// Category Routes
+app.use("/api", categoryRoutes);
 
 const port = env.PORT || 5000;
 
