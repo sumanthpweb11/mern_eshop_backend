@@ -4,11 +4,11 @@ const categoryValidations = require("../validations/categoryValidations");
 
 // ---------------Import Controllers-------------------
 
-const categoryController = require("../controllers/categoryController");
+const { createCategory } = require("../controllers/categoryController");
 
 // ---------------Routes--------------------------
 
 // CREATE CATEGORY ROUTE
-router.post("/create-category", categoryValidations, categoryController.create);
+router.post("/create-category", categoryValidations, createCategory);
 
 module.exports = router;
