@@ -11,6 +11,7 @@ const {
   fetchCategory,
   updateCategory,
   deleteCategory,
+  allCategories,
 } = require("../controllers/categoryController");
 
 // ---------------Routes--------------------------
@@ -28,6 +29,9 @@ router.post(
 
 // FETCH SINGLE CATEGORY ROUTE
 router.get("/fetch-category/:id", Authorization.authorized, fetchCategory);
+
+// FETCH ALL CATEGORIES
+router.get("/allcategories", Authorization.authorized, allCategories);
 
 // UPDATE CATEGORY
 router.put(

@@ -4,6 +4,7 @@ const cors = require("cors");
 const connect = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
+const productRoutes = require("./routes/productRoutes");
 
 const app = express();
 
@@ -23,6 +24,9 @@ app.use("/api", userRoutes);
 
 // Category Routes
 app.use("/api", categoryRoutes);
+
+// Product Routes
+app.use("/api", productRoutes);
 
 const port = env.PORT || 5000;
 

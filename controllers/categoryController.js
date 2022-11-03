@@ -87,6 +87,20 @@ module.exports.fetchCategory = async (req, res) => {
   }
 };
 
+// @route GET /api/allcategories
+// @access Admin
+// @description fetch All Categories
+
+module.exports.allCategories = async (req, res) => {
+  try {
+    const categories = await CategoryModel.find({});
+    return res.status(200).json({ categories });
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json("Internal Server Error");
+  }
+};
+
 // @route POSt /api/fetch-category
 // @access Admin
 // @description Update category
