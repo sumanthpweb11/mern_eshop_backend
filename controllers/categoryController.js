@@ -146,3 +146,20 @@ module.exports.deleteCategory = async (req, res) => {
     return res.status(500).json("Internal Server Error");
   }
 };
+
+// @route POSt /api/random-categories
+// @access Public
+// @description Random Categories
+
+module.exports.randomCategories = async (req, res) => {
+  try {
+    // From Category model ftech 3 random categories
+    const categories = await CategoryModel.aggregate([
+      { $sample: { size: 3 } },
+    ]);
+
+    return res.status(200).json({ categories });
+  } catch (error) {
+    return res.status(500).json("Server internal error");
+  }
+};

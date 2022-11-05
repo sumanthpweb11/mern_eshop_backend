@@ -12,6 +12,7 @@ const {
   updateCategory,
   deleteCategory,
   allCategories,
+  randomCategories,
 } = require("../controllers/categoryController");
 
 // ---------------Routes--------------------------
@@ -31,7 +32,7 @@ router.post(
 router.get("/fetch-category/:id", Authorization.authorized, fetchCategory);
 
 // FETCH ALL CATEGORIES
-router.get("/allcategories", Authorization.authorized, allCategories);
+router.get("/allcategories", allCategories);
 
 // UPDATE CATEGORY
 router.put(
@@ -42,5 +43,8 @@ router.put(
 
 // DELETE CATEGORY
 router.delete("/delete-category/:id", Authorization.authorized, deleteCategory);
+
+// RANDOM CATEGORIES
+router.get("/random-categories", randomCategories);
 
 module.exports = router;
