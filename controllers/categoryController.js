@@ -56,13 +56,16 @@ module.exports.createCategory = async (req, res) => {
 // @description GETS ALL CATEGORIES
 module.exports.categories = async (req, res) => {
   const page = req.params.page;
+  // const page = req.query.page || 1;
   const perPage = 3;
   const skip = (page - 1) * perPage;
+  // const skip = perPage * page;
   try {
     const count = await CategoryModel.find({}).countDocuments();
+    // const count = await CategoryModel.countDocuments();
     const response = await CategoryModel.find({})
-      .skip(skip)
       .limit(perPage)
+      .skip(skip)
       .sort({ updatedAt: -1 });
 
     // console.log(response);
