@@ -25,6 +25,9 @@ router.put(
 router.delete("/delete/:id", Authorization.authorized, deleteProduct);
 
 // Get Products according to Category Card Clicked
-router.get("/cat-products/:name/:page", catProducts);
+router.get("/cat-products/:name/:page?", catProducts);
+
+// search products
+router.get("/search-products/:keyword/:page?", catProducts);
 
 module.exports = router;
